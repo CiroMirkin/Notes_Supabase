@@ -15,49 +15,35 @@ import { Label } from "@/components/ui/label";
 import { GrAdd } from "react-icons/gr";
 import { useNoteStore } from "@/store";
 import { useToast } from "@/components/ui/use-toast";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { submitNote } from "@/supabase/submitNote";
 
 export function NewNote() {
   const { toast } = useToast();
   const note = useNoteStore((state) => state.note);
   const setNote = useNoteStore((state) => state.setNote);
   const setNotes = useNoteStore((state) => state.setNotes);
-  const supabase = createClientComponentClient();
 
   const closeDialog = () => {
     document.getElementById("close-btn")?.click();
   };
   
-  const submitNote = async () => {
+  const createNote = () => {
     try {
-      // const date = log.date as Date;
-      const { error } = await supabase
-        .from("notes")
-        .upsert({ ...note })
-        .select("*")
-        .single();
-      if (!error) {
-        setNotes(note, crypto.randomUUID());
+      submitNote(note).then(() => {
+        setNotes(note, crypto.randomUUID())
         toast({
           title: "Successfully create the note",
-        });
-        closeDialog();
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Fail to create the note",
-          description: "Error: "+ error.message,
-        });
-      }
-      //call to supabase
-    } catch (e) {
+        })
+        closeDialog()
+      })
+    } catch(e) {
       toast({
         variant: "destructive",
         title: "Fail to create the note",
-        description: e as string,
-      });
+        description: "Error: "+ e,
+      })
     }
-  };
+  }
 
   return (
     <Dialog>
@@ -93,7 +79,7 @@ export function NewNote() {
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit" onClick={submitNote}>
+          <Button type="submit" onClick={createNote}>
             Create
           </Button>
         </DialogFooter>
