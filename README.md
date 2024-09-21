@@ -18,4 +18,16 @@ Los datos se envían a Supabase a través de la función `submitNotes` en `src/s
 
 ## Levantar proyecto
 
-Remplazar el archivo `.env.local.example` por un archivo `.env.local` con el contenido de las variables de entorno.
+Localmente:
+
+1. Remplazar el archivo `.env.local.example` por un archivo `.env.local` con el contenido de las variables de entorno.
+
+2. Instalar las dependencias y correr el servidor de desarrollo:
+
+```
+npm i
+```
+
+```
+npm run dev
+```
