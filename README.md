@@ -15,3 +15,7 @@ Obtención de datos y su uso:
 Persistencia de datos:
 
 Los datos se envían a Supabase a través de la función `submitNotes` en `src/supabase/submitNotes.ts`.
+
+## Levantar proyecto
+
+Remplazar el archivo `.env.local.example` por un archivo `.env.local` con el contenido de las variables de entorno.
