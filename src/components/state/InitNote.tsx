@@ -12,8 +12,8 @@ export default function InitNote({ notes }: { notes: ResultNote[] }) {
 
     notes.forEach((noteInNotes) => {
       // Usa `note` como clave y crea un objeto con la propiedad note, el resto del objeto esta en rest
-      const { note, ...rest } = noteInNotes;
-      result[note] = { note };
+      const { note, id, ...rest } = noteInNotes;
+      result[note] = { note, id };
     });
 
     return result;

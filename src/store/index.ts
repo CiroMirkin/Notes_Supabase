@@ -2,10 +2,12 @@ import { create } from "zustand";
 
 export type Note = {
 	note: string;
+	id: string;
 };
 
 export type ResultNote = {
 	note: string;
+	id: string;
 };
 
 interface NoteState {
@@ -20,6 +22,7 @@ interface NoteState {
 export const useNoteStore = create<NoteState>()((set) => ({
 	note: {
 		note: "",
+		id: "",
 	},
 	notes: {},
 	setNote: (note: Note) => set((state) => ({ note: { ...state.note, ...note } })),
