@@ -13,7 +13,6 @@ export const dynamic = "force-dynamic";
 export default async function Home() {
   const supabase = createServerComponentClient({ cookies });
   const { data } = await supabase.auth.getSession();
-  console.log(data);
 
   if (!data.session) {
     return redirect("/auth");
