@@ -10,10 +10,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useNoteStore } from "@/store";
+import { Button } from "./ui/button";
 
 export default function Notes() {
   //list from supabase
   const notes = useNoteStore((state) => state.notes);
+
+  const handleClick = (nodeId: string) => {
+
+  }
 
   return (
     <div>
@@ -31,7 +36,10 @@ export default function Notes() {
               <TableRow
                 key={key}
               >
-                <TableCell>{note.note}</TableCell>
+                <TableCell className="flex justify-between">
+                  <span>{note.note}</span>
+                  <Button onClick={() => handleClick("")}>Delete</Button>
+                </TableCell>
               </TableRow>
             );
           })}
