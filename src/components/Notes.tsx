@@ -20,9 +20,9 @@ export default function Notes() {
   const deleteThisNote = useNoteStore((state) => state.deleteThisNote)
   const { toast } = useToast();
 
-  const handleClick = (nodeId: string, noteKey: string) => {
+  const handleClick = (noteId: string, noteKey: string) => {
     try {
-      deleteNote(nodeId).then(() => {
+      deleteNote(noteId).then(() => {
         toast({
           title: "Note successfully deleted.",
         })
