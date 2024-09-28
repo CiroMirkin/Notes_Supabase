@@ -17,14 +17,16 @@ import { deleteNote } from "@/supabase/deleteNote";
 export default function Notes() {
   //list from supabase
   const notes = useNoteStore((state) => state.notes);
+  const deleteThisNote = useNoteStore((state) => state.deleteThisNote)
   const { toast } = useToast();
 
-  const handleClick = (nodeId: string) => {
+  const handleClick = (nodeId: string, noteKey: string) => {
     try {
       deleteNote(nodeId).then(() => {
         toast({
           title: "Note successfully deleted.",
         })
+        deleteThisNote(noteKey)
       })
     } catch(e) {
       console.error("Fail to delete the note.")
@@ -49,7 +51,7 @@ export default function Notes() {
               >
                 <TableCell className="flex justify-between">
                   <span>{note.note}</span>
-                  <Button onClick={() => handleClick(note.id)}>Delete</Button>
+                  <Button onClick={() => handleClick(note.id, key)}>Delete</Button>
                 </TableCell>
               </TableRow>
             );
