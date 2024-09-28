@@ -17,6 +17,7 @@ interface NoteState {
 	};
 	setNote: (note: Note) => void;
 	setNotes: (note: Note, key: string) => void;
+	deleteThisNote: (noteId: string) => void;
 }
 
 export const useNoteStore = create<NoteState>()((set) => ({
@@ -40,5 +41,12 @@ export const useNoteStore = create<NoteState>()((set) => ({
 			}
 
 			return { notes: sortObject };
+		}),
+	deleteThisNote: (key: string) =>
+		set((state) => {
+			const notes = {...state.notes}
+			delete notes[key]
+
+			return { notes: notes }
 		}),
 }));
