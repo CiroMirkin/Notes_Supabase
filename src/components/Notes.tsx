@@ -34,7 +34,7 @@ export default function Notes() {
   }
 
   const handleEdit = () => {
-    
+
   }
 
   return (
@@ -55,8 +55,10 @@ export default function Notes() {
               >
                 <TableCell className="flex justify-between">
                   <span>{note.note}</span>
-                  <Button onClick={() => handleEdit()}>Edit</Button>
-                  <Button onClick={() => handleClick(note.id, key)}>Delete</Button>
+                  <span className="flex gap-1">
+                    <Button onClick={() => handleEdit()}>Edit</Button>
+                    <Button onClick={() => handleClick(note.id, key)}>Delete</Button>
+                  </span>
                 </TableCell>
               </TableRow>
             );
