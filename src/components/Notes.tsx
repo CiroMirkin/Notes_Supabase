@@ -33,6 +33,10 @@ export default function Notes() {
     }
   }
 
+  const handleEdit = () => {
+    
+  }
+
   return (
     <div>
       <Table style={{ backgroundColor: "#f3f4f6" }}>
@@ -51,6 +55,7 @@ export default function Notes() {
               >
                 <TableCell className="flex justify-between">
                   <span>{note.note}</span>
+                  <Button onClick={() => handleEdit()}>Edit</Button>
                   <Button onClick={() => handleClick(note.id, key)}>Delete</Button>
                 </TableCell>
               </TableRow>
