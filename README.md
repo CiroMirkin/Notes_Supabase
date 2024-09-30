@@ -12,9 +12,23 @@ Obtención de datos y su uso:
 
 * La interfaz de los datos y la definición de su acceso y modificación esta definida en el archivo `src/store/index.ts`.
 
-Persistencia de datos:
+## Casos de uso
 
-Los datos se envían a Supabase a través de la función `submitNotes` en `src/supabase/submitNotes.ts`.
+### Crear una tarea
+
+Implementado en el componente `NewNote` en [src/components/NewNote.tsx](src/components/NewNote.tsx).
+
+1. Al crear una nueva tarea esta se envía a Supabase a través de la función `submitNotes` en `src/supabase/submitNotes.ts`. 
+
+2. Justo después de enviar la tarea a Supabase esta se guarda en el estado global usando la función `setNotes` de Zustand.
+
+### Eliminar una tarea
+
+Implementado en el componente `Notes` en [src/components/Notes.tsx](src/components/Notes.tsx).
+
+1. Al eliminar una tarea la consulta a Supabase se hace a través de la función `deleteNote` en `src/supabase/deleteNote.tsx`.
+
+2. Justo después de hacer la consulta a Supabase para eliminar la tarea esta se elimina del estado global usando la función `deleteThisNote` de Zustand.
 
 ## Levantar proyecto
 
