@@ -17,7 +17,7 @@ export function EditNote({ note }: { note: Note}) {
     return(
         <Dialog>
             <DialogTrigger asChild>
-                <Button>Editar</Button>
+                <Button>Edit</Button>
             </DialogTrigger>
             <DialogContent
                 className="sm:max-w-[425px]"
@@ -47,7 +47,7 @@ export function EditNote({ note }: { note: Note}) {
                 </div>
                 <DialogFooter>
                 <Button type="submit" onClick={() => {}}>
-                    Edit
+                    Save change
                 </Button>
                 </DialogFooter>
             </DialogContent>
