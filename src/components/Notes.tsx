@@ -13,6 +13,7 @@ import { useNoteStore } from "@/store";
 import { Button } from "./ui/button";
 import { useToast } from "./ui/use-toast";
 import { deleteNote } from "@/supabase/deleteNote";
+import { EditNote } from "./EditNote";
 
 export default function Notes() {
   //list from supabase
@@ -56,7 +57,7 @@ export default function Notes() {
                 <TableCell className="flex justify-between">
                   <span>{note.note}</span>
                   <span className="flex gap-1">
-                    <Button onClick={() => handleEdit()}>Edit</Button>
+                    <EditNote note={note} /> 
                     <Button onClick={() => handleClick(note.id, key)}>Delete</Button>
                   </span>
                 </TableCell>
