@@ -11,8 +11,18 @@ import {
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Note } from "@/store";
+import { KeyboardEvent, useState } from "react";
 
 export function EditNote({ note }: { note: Note}) {
+    const [ noteText, setNoteText ] = useState(note.note)
+
+    const handleSubmit = () => {
+        console.log(noteText)
+    }
+
+    function handleKeyDown(e: KeyboardEvent<HTMLInputElement>): void {
+		if (e.key === 'Enter') handleSubmit()
+	}
 
     return(
         <Dialog>
@@ -40,13 +50,14 @@ export function EditNote({ note }: { note: Note}) {
                     id="edit_note"
                     placeholder="Note..."
                     className="col-span-3"
-                    value={note.note}
-                    onChange={() => {}}
+                    value={noteText}
+                    onChange={(e) => setNoteText(e.target.value)}
+                    onKeyDown={handleKeyDown}
                     />
                 </div>
                 </div>
                 <DialogFooter>
-                <Button type="submit" onClick={() => {}}>
+                <Button type="submit" onClick={handleSubmit}>
                     Save change
                 </Button>
                 </DialogFooter>
