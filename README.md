@@ -30,6 +30,14 @@ Implementado en el componente `Notes` en [src/components/Notes.tsx](src/componen
 
 2. Justo después de hacer la consulta a Supabase para eliminar la tarea esta se elimina del estado global usando la función `deleteThisNote` de Zustand.
 
+### Editar una nota
+
+Implementado en el componente `EditNote` en [src/components/EditNote.tsx](src/components/EditNote.tsx).
+
+* Supabase: Función `changeNoteText` en `src/supabase/changeNoteText.tsx`.
+
+* Zustand: Función `editTextOfThisNote`.
+
 ## Levantar proyecto
 
 Localmente:
