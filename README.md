@@ -28,6 +28,16 @@ Implementado en el componente `Notes` en [src/components/Notes.tsx](src/componen
 
 Implementado en el componente `EditNote` en [src/components/EditNote.tsx](src/components/EditNote.tsx).
 
+## Configurar Supabase
+
+1. Crear un proyecto en Supabase llamado *notes*.
+
+2. Crear el OAuth en GitHub y vincularlo con Supabase: 
+    1. Copiar y pegar el *Callback URL* de Supabase en GitHub. 
+    2. Copiar y pegar en Supabase el *CLient Id* y el *Client secrets* de GitHub.
+
+3. Crear una tabla llamada *notes* con una columna *note* de tipo *text*, una columna *id* de tipo *uuid* y una columnas *created_at* de tipo *timestamp*.
+
 ## Levantar proyecto
 
 Localmente:
