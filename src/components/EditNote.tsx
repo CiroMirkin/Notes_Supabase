@@ -12,14 +12,25 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Note, useNoteStore } from "@/store";
 import { KeyboardEvent, useState } from "react";
+import { changeNoteText } from "@/supabase/changeNoteText";
+import { useToast } from "./ui/use-toast";
 
 export function EditNote({ note }: { note: Note}) {
     const [ noteText, setNoteText ] = useState(note.note)
     const editTextOfThisNote = useNoteStore((state) => state.editTextOfThisNote)
+    const { toast } = useToast();
 
     const handleSubmit = () => {
-        console.log(noteText)
-        editTextOfThisNote(note.id, noteText)
+        try {
+            changeNoteText(note.id, noteText).then(() => {
+              toast({
+                title: "Note successfully edited.",
+              })
+              editTextOfThisNote(note.id, noteText)
+            })
+        } catch(e) {
+            console.error("Fail to edit the note.")
+        }
     }
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>): void {
