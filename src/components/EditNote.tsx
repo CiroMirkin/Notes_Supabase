@@ -10,14 +10,16 @@ import {
   } from "@/components/ui/dialog";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
-import { Note } from "@/store";
+import { Note, useNoteStore } from "@/store";
 import { KeyboardEvent, useState } from "react";
 
 export function EditNote({ note }: { note: Note}) {
     const [ noteText, setNoteText ] = useState(note.note)
+    const editTextOfThisNote = useNoteStore((state) => state.editTextOfThisNote)
 
     const handleSubmit = () => {
         console.log(noteText)
+        editTextOfThisNote(note.id, noteText)
     }
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>): void {

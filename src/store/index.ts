@@ -18,6 +18,7 @@ interface NoteState {
 	setNote: (note: Note) => void;
 	setNotes: (note: Note, key: string) => void;
 	deleteThisNote: (noteId: string) => void;
+	editTextOfThisNote: (noteId: string, text: string) => void;
 }
 
 export const useNoteStore = create<NoteState>()((set) => ({
@@ -48,5 +49,30 @@ export const useNoteStore = create<NoteState>()((set) => ({
 			delete notes[key]
 
 			return { notes: notes }
+		}),
+	editTextOfThisNote: (noteId: string, text: string) =>
+		set((state) => {
+			let notes = {...state.notes}
+
+			const newNotes = Object.keys(notes).map(key => {
+				const note = notes[key]
+				if (note.id === noteId) {
+                    note.note = text
+                }
+				return note 
+			})
+
+			// Format
+
+			const result: {
+				[key: string]: Note
+			} = {}
+
+			newNotes.forEach(n => {
+				const { note, ...rest } = n
+				result[note] = { note, ...rest }
+			})
+
+			return { notes: result }
 		}),
 }));
