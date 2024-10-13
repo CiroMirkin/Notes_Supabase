@@ -18,25 +18,15 @@ Obtención de datos y su uso:
 
 Implementado en el componente `NewNote` en [src/components/NewNote.tsx](src/components/NewNote.tsx).
 
-1. Al crear una nueva tarea esta se envía a Supabase a través de la función `submitNotes` en `src/supabase/submitNotes.ts`. 
-
-2. Justo después de enviar la tarea a Supabase esta se guarda en el estado global usando la función `setNotes` de Zustand.
+1. Al crear una nueva tarea esta se envía a Supabase a través de la función `submitNotes` en `src/supabase/submitNotes.ts`. Justo después de enviar la tarea a Supabase esta se guarda en el estado global usando la función `setNotes` de Zustand.
 
 ### Eliminar una tarea
 
 Implementado en el componente `Notes` en [src/components/Notes.tsx](src/components/Notes.tsx).
 
-1. Al eliminar una tarea la consulta a Supabase se hace a través de la función `deleteNote` en `src/supabase/deleteNote.tsx`.
-
-2. Justo después de hacer la consulta a Supabase para eliminar la tarea esta se elimina del estado global usando la función `deleteThisNote` de Zustand.
-
 ### Editar una nota
 
 Implementado en el componente `EditNote` en [src/components/EditNote.tsx](src/components/EditNote.tsx).
-
-* Supabase: Función `changeNoteText` en `src/supabase/changeNoteText.tsx`.
-
-* Zustand: Función `editTextOfThisNote`.
 
 ## Levantar proyecto
 
