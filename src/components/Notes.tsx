@@ -34,10 +34,6 @@ export default function Notes() {
     }
   }
 
-  const handleEdit = () => {
-
-  }
-
   return (
     <div>
       <Table style={{ backgroundColor: "#f3f4f6" }}>
